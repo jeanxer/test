@@ -1,4 +1,10 @@
-body, html {
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
     margin: 0;
     padding: 0;
     height: 100%;
@@ -15,9 +21,8 @@ body {
     align-items: center;
     height: 100vh;
     text-align: center;
-    color: #e6e6e6;
+    color: #fff;
     position: relative;
-    background-color: #0b000b;
 }
 
 body::before {
@@ -27,7 +32,7 @@ body::before {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.3); /* Capa más tenue */
+    background: rgba(0, 0, 0, 0);
     z-index: -1;
 }
 
@@ -41,13 +46,13 @@ body::before {
     justify-content: center;
     align-items: center;
     background: rgba(0, 0, 0, 0.6);
-    color: #ff003c;
+    color: #fff;
     font-size: 2rem;
     border: none;
     cursor: pointer;
     z-index: 1000;
     backdrop-filter: blur(10px);
-    text-shadow: 0 0 10px rgba(255, 0, 60, 0.8);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
     transition: all 0.3s ease;
 }
 
@@ -55,14 +60,14 @@ body::before {
     background: rgba(0, 0, 0, 0.8);
 }
 
-.container {
-    max-width: 600px;
-    width: 100%;
-    color: #e6e6e6;
-    padding: 20px;
+#playAudio:focus {
+    outline: none;
+}
+
+#playAudio.hidden {
     opacity: 0;
-    animation: fadeIn 1.5s forwards;
-    text-align: center;
+    pointer-events: none;
+    transition: opacity 1s ease-out;
 }
 
 @keyframes fadeIn {
@@ -71,39 +76,53 @@ body::before {
     }
 }
 
+.container {
+    max-width: 600px;
+    width: 100%;
+    color: #fff;
+    padding: 20px;
+    opacity: 0;
+    animation: fadeIn 1.5s forwards;
+    text-align: center;
+}
+
 .main-title {
     font-size: 2.5em;
     margin-bottom: 20px;
     margin-top: 30px;
-    color: #ff003c;
-    text-shadow: 2px 2px 0px #0b000b, -2px -2px 0px #55007d;
+    color: #fff;
+    text-shadow: 2px 2px 0px #444444, -2px -2px 0px #55007d;
     position: relative;
     animation: glitch 1s infinite;
 }
 
+.main-title:hover {
+    transform: scale(1.05);
+}
+
 @keyframes glitch {
     0% {
-        text-shadow: 2px 2px 0px #0b000b, -2px -2px 0px #800000;
+        text-shadow: 2px 2px 0px #444444, -2px -2px 0px rgb(112, 0, 0);
         transform: translate(0, 0);
     }
     20% {
-        text-shadow: 4px -4px 0px #0b000b, -4px 4px 0px #800000;
+        text-shadow: 4px -4px 0px #444444, -4px 4px 0px rgb(112, 0, 0);
         transform: translate(-2px, 2px);
     }
     40% {
-        text-shadow: -4px 4px 0px #0b000b, 4px -4px 0px #800000;
+        text-shadow: -4px 4px 0px #444444, 4px -4px 0px rgb(112, 0, 0);
         transform: translate(2px, -2px);
     }
     60% {
-        text-shadow: 4px 4px 0px #0b000b, -4px -4px 0px #800000;
+        text-shadow: 4px 4px 0px #444444, -4px -4px 0px rgb(112, 0, 0);
         transform: translate(-1px, 1px);
     }
     80% {
-        text-shadow: -2px -2px 0px #0b000b, 2px 2px 0px #800000;
+        text-shadow: -2px -2px 0px #444444, 2px 2px 0px rgb(112, 0, 0);
         transform: translate(1px, -1px);
     }
     100% {
-        text-shadow: 2px 2px 0px #0b000b, -2px -2px 0px #800000;
+        text-shadow: 2px 2px 0px #444444, -2px -2px 0px rgb(112, 0, 0);
         transform: translate(0, 0);
     }
 }
@@ -118,9 +137,9 @@ body::before {
     height: 150px;
     border-radius: 50%;
     object-fit: cover;
-    border: 5px solid #ff003c;
+    border: 5px solid rgb(112, 0, 0);
     transition: transform 0.3s ease;
-    box-shadow: 0 0 15px rgba(255, 0, 60, 0.8);
+    box-shadow: 0 0 15px rgb(112, 0, 0);
 }
 
 .profile-img:hover {
@@ -136,31 +155,31 @@ body::before {
 .button {
     display: inline-block;
     padding: 15px;
-    background-color: #ff003c;
-    color: #ffffff;
+    background-color: rgb(112, 0, 0);
+    color: rgb(0, 0, 0);
     text-decoration: none;
     font-size: 18px;
     border-radius: 8px;
     transition: all 0.3s ease;
     cursor: pointer;
-    box-shadow: 0 0 10px #ff003c;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .button:hover {
-    background-color: #ff1e56; /* Rojo más claro al pasar el mouse */
+    background-color: rgb(112, 0, 0);
     transform: translateY(-6px);
-    box-shadow: 0 0 20px #ff1e56;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.6);
 }
 
 .button:active {
     transform: translateY(2px);
-    box-shadow: 0 0 5px #fc0324;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 footer {
     margin-top: 30px;
     font-size: 0.9em;
-    color: #999;
+    color: #ccc;
     text-align: center;
 }
 
